@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Bostwo
 {
-    class Ssak : Organizm
+    class Ssak : Organizm, IFunkcjonowanie
     {
         private byte OdnozaDolne = 2;
         private byte OdnozaGorne = 2;
@@ -13,7 +13,7 @@ namespace Bostwo
             Zycie = true;
             Odnoza = 4;
         }
-        public virtual bool PoruszenieSie(bool Przod = false, bool Bok = false, byte OdnozaDolne = 0, byte OdnozaGorne = 0)
+        public bool PoruszSie(bool Przod, bool Bok, byte OdnozaDolne, byte OdnozaGorne)
         {
             if (Przod == true || Bok == true)
             {

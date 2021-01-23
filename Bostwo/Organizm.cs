@@ -4,27 +4,30 @@ using System.Text;
 
 namespace Bostwo
 {
-    class Organizm
+    public class Organizm
     {
-        protected bool Zycie = false;
-        protected enum Plec
-        {
-            Samica,
-            Samiec,
-            Obojniak
-        }
-        protected byte PlecOsobnika = Convert.ToByte(Plec.Obojniak);
-        protected byte Odnoza;
+        public bool Zycie = false;
+        public byte PlecOsobnika;
+        public byte Odnoza;
+        public string Nazwa;
 
-        protected Organizm()
+        public Organizm()
         {
             Zycie = true;
+            PlecOsobnika = 0;
+            Random los = new Random();
+            Odnoza = Convert.ToByte(los.Next(Byte.MinValue, Byte.MaxValue));
+            Nazwa = "Nie nawales mnie....";
         }
-        protected Organizm(bool CzyZyje, string Plec)
+
+        public Organizm(bool CzyZyje, byte plec, byte odnoza, string nazwa)
         {
             Zycie = CzyZyje;
-
+            PlecOsobnika = plec;
+            Odnoza = odnoza;
+            Nazwa = nazwa;
         }
+
         ~Organizm()
         {
             Zycie = false;
