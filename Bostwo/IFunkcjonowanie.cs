@@ -8,7 +8,7 @@ namespace Bostwo
 {
     public interface IFunkcjonowanie
     {
-        bool PoruszSie(bool Przod, bool Bok, byte OdnozaDolne, byte OdnozaGorne);
+       // bool 
 
     }
 }

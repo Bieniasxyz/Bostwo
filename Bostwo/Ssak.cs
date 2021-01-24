@@ -4,33 +4,17 @@ using System.Text;
 
 namespace Bostwo
 {
-    class Ssak : Organizm, IFunkcjonowanie
+    public class Ssak : Organizm
     {
         private byte OdnozaDolne = 2;
         private byte OdnozaGorne = 2;
-        private Ssak()
+        public Ssak(bool CzyZyje, byte plec, byte odnoza, string nazwa)
         {
-            Zycie = true;
-            Odnoza = 4;
+            DanePodstawowe(CzyZyje, plec, odnoza, nazwa);
         }
-        public bool PoruszSie(bool Przod, bool Bok, byte OdnozaDolne, byte OdnozaGorne)
+        public override bool OdzywiajSie()
         {
-            if (Przod == true || Bok == true)
-            {
-                if (OdnozaDolne != 0 || OdnozaGorne != 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return true;
-            }
-
+            return false;
         }
     }
 }

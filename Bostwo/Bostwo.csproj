@@ -50,6 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ptak.cs" />
     <Compile Include="Ssak.cs" />
+    <Compile Include="Wspolne.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -6,5 +6,6 @@ namespace Bostwo
 {
     class Ptak
     {
+
     }
 }

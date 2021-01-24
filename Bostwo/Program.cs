@@ -13,11 +13,17 @@ namespace Bostwo
             Obsluga host = new Obsluga();
             host.DzialanieOgolne();
 
-            host.PodejmijDzialanie(1);
+            
 
-            host.DodajOrganizm(new Organizm(false, 1, 5, "tesd"));
-            host.WyswietlWszystkieOrganizmy();
-            Console.ReadLine();
+            //host.DodajOrganizm(new Organizm(false, 1, 5, "tesd"));
+            //host.WyswietlWszystkieOrganizmy();
+            string znak = Console.ReadLine();
+
+            while (znak != "0")
+            {
+                host.PodejmijDzialanie(Convert.ToInt32(znak));
+                znak = Console.ReadLine();
+            }
         }
     }
 }
