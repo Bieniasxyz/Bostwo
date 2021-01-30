@@ -8,7 +8,7 @@ namespace Bostwo
 {
     public interface IFunkcjonowanie
     {
-       // bool 
+        void PoruszSie(int liczbakrokow, string kierunek);
 
     }
 }

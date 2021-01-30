@@ -4,17 +4,21 @@ using System.Text;
 
 namespace Bostwo
 {
-    public class Ssak : Organizm
+    public class Ssak : Organizm, IFunkcjonowanie
     {
-        private byte OdnozaDolne = 2;
-        private byte OdnozaGorne = 2;
         public Ssak(bool CzyZyje, byte plec, byte odnoza, string nazwa)
         {
             DanePodstawowe(CzyZyje, plec, odnoza, nazwa);
         }
-        public override bool OdzywiajSie()
+        public override void OdzywiajSie()
         {
-            return false;
+            base.OdzywiajSie();
+            Console.WriteLine("Nie dałeś mnie noża i widelca, więc zjem palcyma");
         }
+        public override void PoruszSie(int liczbakrokow, string kierunek)
+        {
+            Console.WriteLine("Ja " + Nazwa + "idę sobie w kierunku " + kierunek + " o " + liczbakrokow);
+        }
+
     }
 }

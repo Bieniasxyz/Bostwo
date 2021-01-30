@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Bostwo
 {
-    public class Organizm : Wspolne
+    public class Organizm : Wspolne, IFunkcjonowanie
     {
         public bool Zycie = false;
         public byte PlecOsobnika;
@@ -37,6 +37,15 @@ namespace Bostwo
         {
             Zycie = false;
         }
+        public override void OdzywiajSie()
+        {
+            base.OdzywiajSie();
+            Console.WriteLine("Mniam mniam");
+        }
 
+        public virtual void PoruszSie(int liczbakrokow, string kierunek)
+        {
+            Console.WriteLine("Ja " + Nazwa + "poruszam się w kierunku " + kierunek + " o " + liczbakrokow);
+        }
     }
 }
