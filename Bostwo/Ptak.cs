@@ -17,7 +17,7 @@ namespace Bostwo
         }
         public override void PoruszSie(int liczbakrokow, string kierunek)
         {
-            Console.WriteLine("Ja " + Nazwa + "lecę sobie w kierunku " + kierunek + " o " + liczbakrokow);
+            Console.WriteLine("Ja " + Nazwa + " lecę sobie w kierunku " + kierunek + " o " + liczbakrokow);
         }
     }
 }

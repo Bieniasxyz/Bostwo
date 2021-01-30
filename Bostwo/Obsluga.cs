@@ -15,6 +15,13 @@ namespace Bostwo
             Organizmy = new List<Organizm>();
             Ssaki = new List<Ssak>();
             Ptaki = new List<Ptak>();
+            /* Przykładowe dane obiektów poniżej*/
+            Organizmy.Add(new Organizm());
+            Organizmy.Add(new Organizm(false, 1, 2, "Janusz"));
+            Ssaki.Add(new Ssak(true, 0, 6, "Janusz"));
+            Ssaki.Add(new Ssak(true, 1, 88, "Grazyna"));
+            Ptaki.Add(new Ptak(true, 0, 123, "Seba"));
+            Ptaki.Add(new Ptak(true, 1, 34, "Karyna"));
         }
         
         public void PodejmijDzialanie(int liczba)
@@ -59,11 +66,11 @@ namespace Bostwo
                                 znak = ZmienLiczbeOdnozyOrganizmu(obiektnumer);
                                 break;
                             case 4:
-                                OdzywiajSie();
-                                znak = 0;
+                                znak = PoruszamSie(obiektnumer);
                                 break;
                             case 5:
-                                znak = PoruszamSie(obiektnumer);
+                                Organizmy[obiektnumer-1].OdzywiajSie();
+                                znak = 9;
                                 break;
                             case 6:
                                 znak = KlonujOrganizm(obiektnumer);
@@ -100,11 +107,11 @@ namespace Bostwo
                                 znak = ZmienLiczbeOdnozyOrganizmu(obiektnumer, 1);
                                 break;
                             case 4:
-                                Ssaki[obiektnumer - 1].OdzywiajSie();
-                                znak = 0;
+                                znak = PoruszamSie(obiektnumer, 1);
                                 break;
                             case 5:
-                                znak = PoruszamSie(obiektnumer, 1);
+                                Ssaki[obiektnumer - 1].OdzywiajSie();
+                                znak = 9;
                                 break;
                             case 6:
                                 znak = KlonujOrganizm(obiektnumer, 1);
@@ -116,7 +123,7 @@ namespace Bostwo
                                 znak = UnicestwijOrganizm(obiektnumer, 1);
                                 break;
                             default:
-                                znak = 0;
+                                znak = 9;
                                 break;
                         }
                     }
@@ -140,11 +147,11 @@ namespace Bostwo
                                 znak = ZmienLiczbeOdnozyOrganizmu(obiektnumer, 2);
                                 break;
                             case 4:
-                                Ptaki[obiektnumer - 1].OdzywiajSie();
-                                znak = 0;
+                                znak = PoruszamSie(obiektnumer, 2);
                                 break;
                             case 5:
-                                znak = PoruszamSie(obiektnumer, 2);
+                                Ptaki[obiektnumer-1].OdzywiajSie();
+                                znak = 9;
                                 break;
                             case 6:
                                 znak = KlonujOrganizm(obiektnumer, 2);
@@ -156,7 +163,7 @@ namespace Bostwo
                                 znak = UnicestwijOrganizm(obiektnumer, 2);
                                 break;
                             default:
-                                znak = 0;
+                                znak = 9;
                                 break;
                         }
                     }
@@ -210,17 +217,17 @@ namespace Bostwo
             string kierunek = Console.ReadLine();
             if (typ ==0)
             {
-                Organizmy[obiektnumer].PoruszSie(kroki, kierunek);
+                Organizmy[obiektnumer-1].PoruszSie(kroki, kierunek);
             }
             else if(typ ==1)
             {
-                Ssaki[obiektnumer].PoruszSie(kroki, kierunek);
+                Ssaki[obiektnumer-1].PoruszSie(kroki, kierunek);
             }
             else
             {
-                Ptaki[obiektnumer].PoruszSie(kroki, kierunek);
+                Ptaki[obiektnumer-1].PoruszSie(kroki, kierunek);
             }
-            znak = 0;
+            znak = 9;
             return znak;
         }
 
@@ -229,20 +236,20 @@ namespace Bostwo
             int znak;
             if (typ == 0)
             {
-                Organizmy.Remove(Organizmy[obiektnumer]);
+                Organizmy.Remove(Organizmy[obiektnumer-1]);
                 Console.WriteLine("Unicestwiono organizm");
             }
             else if(typ == 1)
             {
-                Ssaki.Remove(Ssaki[obiektnumer]);
+                Ssaki.Remove(Ssaki[obiektnumer-1]);
                 Console.WriteLine("Unicestwiono Ssaka");
             }
             else 
             {
-                Ptaki.Remove(Ptaki[obiektnumer]);
+                Ptaki.Remove(Ptaki[obiektnumer-1]);
                 Console.WriteLine("Unicestwiono Ptaka");
             }
-            znak = 0;
+            znak = 9;
             return znak;
         }
 
@@ -265,7 +272,7 @@ namespace Bostwo
                 Console.WriteLine("Zabito Ptaka");
             }
 
-            znak = 0;
+            znak = 9;
             return znak;
         }
 
@@ -286,48 +293,28 @@ namespace Bostwo
             }
 
             Console.WriteLine("Sklonowano obiekt");
-            znak = 0;
+            znak = 9;
             return znak;
         }
 
         private void WykonajKlonowanieOrganizmu(int obiektnumer)
         {
-            if (Organizmy.Count > 1)
-            {
                 var klon = new Organizm(Organizmy[obiektnumer - 1].Zycie, Organizmy[obiektnumer - 1].PlecOsobnika, Organizmy[obiektnumer - 1].Odnoza, Organizmy[obiektnumer - 1].Nazwa);
                 Organizmy.Add(klon);
-            }
-            else
-            {
-                var klon = new Organizm(Organizmy[obiektnumer].Zycie, Organizmy[obiektnumer].PlecOsobnika, Organizmy[obiektnumer].Odnoza, Organizmy[obiektnumer].Nazwa);
-                Organizmy.Add(klon);
-            }
         }
         private void WykonajKlonowanieSsaka(int obiektnumer)
         {
-            if (Organizmy.Count > 1)
-            {
+           
                 var klon = new Ssak(Ssaki[obiektnumer - 1].Zycie, Ssaki[obiektnumer - 1].PlecOsobnika, Ssaki[obiektnumer - 1].Odnoza, Ssaki[obiektnumer - 1].Nazwa);
                 Ssaki.Add(klon);
-            }
-            else
-            {
-                var klon = new Ssak(Ssaki[obiektnumer].Zycie, Ssaki[obiektnumer].PlecOsobnika, Ssaki[obiektnumer].Odnoza, Ssaki[obiektnumer].Nazwa);
-                Ssaki.Add(klon);
-            }
+            
         }
         private void WykonajKlonowaniePtaka(int obiektnumer)
         {
-            if (Organizmy.Count > 1)
-            {
+  
                 var klon = new Ptak(Ptaki[obiektnumer - 1].Zycie, Ptaki[obiektnumer - 1].PlecOsobnika, Ptaki[obiektnumer - 1].Odnoza, Ptaki[obiektnumer - 1].Nazwa);
                 Ptaki.Add(klon);
-            }
-            else
-            {
-                var klon = new Ptak(Ptaki[obiektnumer].Zycie, Ptaki[obiektnumer].PlecOsobnika, Ptaki[obiektnumer].Odnoza, Ptaki[obiektnumer].Nazwa);
-                Ptaki.Add(klon);
-            }
+  
         }
 
         private int ZmienLiczbeOdnozyOrganizmu(int obiektnumer, int typ = 0)
@@ -346,7 +333,7 @@ namespace Bostwo
             {
                 Ptaki[obiektnumer - 1].Odnoza = Convert.ToByte(Console.ReadLine());
             }
-            znak = 0;
+            znak = 9;
             return znak;
         }
 
@@ -371,7 +358,7 @@ namespace Bostwo
             {
                 Ptaki[obiektnumer - 1].PlecOsobnika = Convert.ToByte(Console.ReadLine());
             }
-            znak = 0;
+            znak = 9;
             return znak;
         }
 
@@ -394,7 +381,7 @@ namespace Bostwo
                 Ptaki[obiektnumer - 1].Nazwa = Console.ReadLine();
                 DzialanieSzczegolne();
             }
-            znak = 0;
+            znak = 9;
             return znak;
         }
 
@@ -496,6 +483,7 @@ namespace Bostwo
                 Console.WriteLine("Jaka plec ma ssak: " + InfoOPlci(item.PlecOsobnika));
                 Console.WriteLine("Nazwa Ssaka to: " + item.Nazwa);
                 Console.WriteLine("------------------------");
+                i++;
             }
         }
         public void wyswietlPtaki()
@@ -509,6 +497,7 @@ namespace Bostwo
                 Console.WriteLine("Jaka plec ma ptak: " + InfoOPlci(item.PlecOsobnika));
                 Console.WriteLine("Nazwa ptaka to: " + item.Nazwa);
                 Console.WriteLine("------------------------");
+                i++;
             }
         }
         private void Zabij(int type)

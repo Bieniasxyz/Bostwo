@@ -43,13 +43,14 @@ namespace Bostwo
         }
         protected void WstepDzialanSzczegolnych(out int znak, out int obiektnumer)
         {
+            obiektnumer = 0;
             znak = Convert.ToInt32(Console.ReadLine());
             if (znak != 0)
             {
                 Console.WriteLine("Wybierz obiekt swoich działań (podaj numer obiektu): ");
                 obiektnumer = Convert.ToInt32(Console.ReadLine());
             }
-            obiektnumer = 0;
+            
         }
     }
 }
