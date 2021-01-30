@@ -229,17 +229,17 @@ namespace Bostwo
             int znak;
             if (typ == 0)
             {
-                Organizmy.Remove(Organizmy[obiektnumer - 1]);
+                Organizmy.Remove(Organizmy[obiektnumer]);
                 Console.WriteLine("Unicestwiono organizm");
             }
             else if(typ == 1)
             {
-                Ssaki.Remove(Ssaki[obiektnumer - 1]);
+                Ssaki.Remove(Ssaki[obiektnumer]);
                 Console.WriteLine("Unicestwiono Ssaka");
             }
             else 
             {
-                Ptaki.Remove(Ptaki[obiektnumer - 1]);
+                Ptaki.Remove(Ptaki[obiektnumer]);
                 Console.WriteLine("Unicestwiono Ptaka");
             }
             znak = 0;
@@ -487,8 +487,10 @@ namespace Bostwo
 
         public void WyswietlSsaki()
         {
+            int i = 1;
             foreach (var item in Ssaki)
             {
+                Console.WriteLine("Ssak numer: " + i);
                 Console.WriteLine("Czy Ssak zyje:" + InfoOZyciu(item.Zycie));
                 Console.WriteLine("Ile ssak ma nog: " + item.Odnoza);
                 Console.WriteLine("Jaka plec ma ssak: " + InfoOPlci(item.PlecOsobnika));
@@ -498,8 +500,10 @@ namespace Bostwo
         }
         public void wyswietlPtaki()
         {
+            int i = 1;
             foreach (var item in Ptaki)
             {
+                Console.WriteLine("Ptak numer: " + i);
                 Console.WriteLine("Czy ptak zyje:" + InfoOZyciu(item.Zycie));
                 Console.WriteLine("Ile ptak ma skrzydeł: " + item.Odnoza);
                 Console.WriteLine("Jaka plec ma ptak: " + InfoOPlci(item.PlecOsobnika));
